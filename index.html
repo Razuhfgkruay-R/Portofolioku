@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Razani Yusuf</title>
+    <style>
+        /* Mengembalikan Font Nunito untuk keseluruhan, JetBrains untuk Terminal */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* KEMBALI MENGGUNAKAN NUNITO */
+            font-family: 'Nunito', 'Noto Sans JP', sans-serif;
+            background-color: #f0f8ff; background-attachment: fixed;
+            color: #0b2e4a; overflow-x: hidden; line-height: 1.6;
+            transition: background 0.8s ease, color 0.5s ease;
+        }
+
+        /* =========================================
+           TEMA 1: AERO MODE (Default)
+        ========================================= */
+        body.theme-aero { background: radial-gradient(circle at 50% 0%, #89d8fe 0%, #1a8cff 60%, #005ce6 100%); }
+        .theme-aero .hill-bg { display: block; opacity: 1; }
+        .theme-aero .aero-bubbles { display: block; }
+        .theme-aero .glass-bubbles { display: none; }
+        .theme-aero .glass-panel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 100%);
+            border: 1px solid rgba(255,255,255,0.8); border-top: 2px solid #fff; border-left: 2px solid #fff;
+            box-shadow: 0 15px 35px rgba(0, 50, 100, 0.1), inset 0 0 15px rgba(255,255,255,0.5); color: #0b2e4a;
+        }
+        .theme-aero .glass-text { color: #004d99; text-shadow: 0 2px 5px rgba(255,255,255,0.8); }
+        .theme-aero .btn-elegant { background: linear-gradient(180deg, #4facfe 0%, #0073e6 100%); color: white; border: 1px solid #005ce6; }
+        .theme-aero .icon-svg { fill: #0073e6; }
+        
+        /* Custom Dropdown Aero */
+        .theme-aero .custom-dropdown-menu { background: rgba(255,255,255,0.8); border: 1px solid white; box-shadow: 0 10px 25px rgba(0,50,100,0.2); color: #0b2e4a;}
+        .theme-aero .custom-dropdown-item:hover { background: rgba(0,115,230,0.1); }
+
+        /* =========================================
+           TEMA 2: GLASSMORPHISM MODE (Sleek/Modern)
+        ========================================= */
+        body.theme-glass { background: #0f172a; color: #e2e8f0; }
+        .theme-glass .hill-bg { opacity: 0; pointer-events: none; }
+        .theme-glass .aero-bubbles { display: none; }
+        .theme-glass .glass-bubbles { display: block; }
+        .theme-glass .glass-panel {
+            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1); border-top: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4); color: #f1f5f9;
+        }
+        .theme-glass .glass-text { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.6), 0 0 20px rgba(56, 189, 248, 0.4), 0 0 30px rgba(56, 189, 248, 0.2); }
+        .theme-glass .icon-svg { fill: #38bdf8; filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8)); }
+        .theme-glass .btn-elegant { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(56, 189, 248, 0.5); color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); text-shadow: 0 0 8px rgba(56, 189, 248, 0.8);}
+        .theme-glass .btn-elegant:hover { background: rgba(56, 189, 248, 0.2); box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); }
+        .theme-glass nav { background: rgba(15, 23, 42, 0.6); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .theme-glass .code-tag { background: rgba(255,255,255,0.05); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 0 10px rgba(56,189,248,0.1);}
+        .theme-glass .code-tag:hover { background: rgba(56, 189, 248, 0.15); box-shadow: 0 0 15px rgba(56,189,248,0.3);}
+        .theme-glass .aero-frame { background: rgba(0,0,0,0.4); border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 5px 20px rgba(0,0,0,0.8);}
+        .theme-glass .aero-frame img { opacity: 0.85; filter: contrast(1.1); }
+        
+        /* Custom Dropdown Glass */
+        .theme-glass .custom-dropdown-menu { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); color: #e2e8f0;}
+        .theme-glass .custom-dropdown-item:hover { background: rgba(56, 189, 248, 0.2); }
+
+        /* =========================================
+           TEMA 3: GOOGLE EASTER EGG MODE 
+        ========================================= */
+        body.theme-google { background: linear-gradient(45deg, #4285F4 0%, #34A853 33%, #FBBC05 66%, #EA4335 100%); }
+        .theme-google .glass-panel { background: rgba(255,255,255,0.95); color: #202124; border:none; box-shadow: 0 20px 50px rgba(0,0,0,0.3);}
+        .theme-google .glass-text { color: #4285F4; text-shadow: none;}
+        .theme-google .btn-elegant { background: #4285F4; color: white; border: none; text-shadow: none; box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);}
+        .theme-google .code-terminal { background: #202124; color: #34A853; border: none;}
+        .theme-google .terminal-header { background: #3c4043; color: #fff;}
+        .theme-google .icon-svg { fill: #EA4335; }
+        .theme-google .custom-dropdown-menu { background: white; color: black; border: 1px solid #ccc; }
+
+        /* --- BUBBLE MODE GLASSMORPHISM --- */
+        .glass-bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; overflow: hidden; }
+        .g-bubble { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: moveAround 20s infinite alternate ease-in-out; }
+        .gb-blue { width: 400px; height: 400px; background: #0284c7; top: -10%; left: 10%; }
+        .gb-purple { width: 500px; height: 500px; background: #7e22ce; bottom: -20%; right: -10%; animation-delay: -5s; }
+        .gb-yellow { width: 300px; height: 300px; background: #ca8a04; top: 40%; left: 40%; animation-delay: -10s; opacity: 0.4;}
+        @keyframes moveAround { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-50px, 100px) scale(0.9); } }
+
+        /* --- BUKIT GANDA --- */
+        .hill-bg-back { position: fixed; bottom: -5vh; right: -15vw; width: 90vw; height: 45vh; background: linear-gradient(180deg, #5ab822 0%, #2f7a08 100%); border-top: 1px solid rgba(255,255,255,0.5); border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: -3; transition: opacity 0.8s ease; }
+        .hill-bg-front { position: fixed; bottom: -10vh; left: -10vw; width: 110vw; height: 40vh; background: linear-gradient(180deg, #7be038 0%, #46a312 100%); border-top: 1px solid rgba(255,255,255,0.8); border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: -2; transition: opacity 0.8s ease; box-shadow: 0 -10px 30px rgba(0,0,0,0.2), inset 0 15px 30px rgba(255,255,255,0.4);}
+
+        /* --- GELEMBUNG AERO --- */
+        .aero-bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -4; }
+        .a-bubble { position: absolute; bottom: -100px; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.1)); border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); animation: floatUp linear infinite; }
+        @keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(-110vh); opacity: 0; } }
+
+        /* --- SPLASH SCREEN INTERAKTIF (SLIDE TO UNLOCK) --- */
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #0b2e4a, #020617); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease, transform 0.8s ease; }
+        .splash-title { font-size: 3.5rem; color: #fff; font-weight: 900; letter-spacing: 3px; margin-bottom: 50px; text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+        .slider-container { width: 340px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 40px; border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); }
+        .slider-text { margin-left: 35px; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 1px; animation: shimmer 2s infinite linear; background: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, #fff 50%, rgba(255,255,255,0.5) 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @keyframes shimmer { to { background-position: 200% center; } }
+        .slider-thumb { position: absolute; left: 5px; width: 50px; height: 50px; background: #fff; border-radius: 50%; cursor: grab; display: flex; justify-content: center; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: transform 0.1s; }
+        .slider-thumb:active { cursor: grabbing; transform: scale(0.95); }
+        .slider-thumb svg { width: 24px; fill: #0b2e4a; pointer-events: none;}
+
+        /* --- NAVIGASI --- */
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 50px; background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.5); display: flex; justify-content: space-between; align-items: center; z-index: 100; transition: all 0.5s ease; }
+        .logo { font-size: 1.5rem; font-weight: 900; }
+        .nav-controls { display: flex; gap: 15px; align-items: center; }
+        .top-btn { background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.5); font-weight: 700; cursor: pointer; font-family: inherit; color: inherit; transition: 0.3s; outline: none; display: flex; align-items: center; gap: 5px;}
+        .top-btn:hover { background: rgba(255,255,255,0.4); }
+
+        /* --- CUSTOM DROPDOWN BAHASA --- */
+        .custom-dropdown { position: relative; }
+        .custom-dropdown-menu {
+            position: absolute; top: 120%; right: 0; min-width: 120px;
+            border-radius: 12px; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); overflow: hidden;
+        }
+        .custom-dropdown.active .custom-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .custom-dropdown-item { padding: 10px 15px; cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: 0.2s; display: flex; align-items: center; gap: 8px;}
+
+        /* --- GLOBAL --- */
+        main { max-width: 900px; margin: 100px auto 60px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+        .glass-panel { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; transition: all 0.5s ease; }
+        
+        .hero { text-align: center; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.5); margin: 0 auto 20px auto; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
+        h1 { font-size: 2.8rem; letter-spacing: -1px; margin-bottom: 5px; font-weight: 900; }
+        h2 { font-size: 1.2rem; font-weight: 700; opacity: 0.8; margin-bottom: 20px; }
+
+        /* --- KODE & TERMINAL --- */
+        .skills-container { text-align: center; }
+        .tag-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .code-tag { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8); padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: 1rem; color: inherit; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .code-tag:hover { transform: translateY(-2px); }
+        .code-tag:active { transform: translateY(1px); }
+
+        .code-terminal { background: rgba(5, 15, 25, 0.9); text-align: left; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 20px; color: #00ffcc; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; min-height: 200px; overflow-x: auto; position: relative; display: none; margin-top: 10px; }
+        .terminal-header { position: absolute; top: 0; left: 0; width: 100%; background: rgba(255,255,255,0.05); padding: 5px 15px; font-size: 0.8rem; color: #88ccee; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; align-items: center; }
+        .mac-btn { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .mac-red { background: #ff5f56; } .mac-yellow { background: #ffbd2e; } .mac-green { background: #27c93f; }
+        .typewriter-text { margin-top: 25px; white-space: pre-wrap; line-height: 1.5; }
+        .cursor { display: inline-block; width: 8px; height: 15px; background-color: #00ffcc; animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 5px;}
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- PROYEK GRID & FOTO --- */
+        .project-card { margin-bottom: 30px; }
+        .project-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .project-header h3 { font-size: 1.5rem; font-weight: 900; display: flex; align-items: center;}
+        .project-header svg { width: 28px; transition: fill 0.5s ease; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));}
+        .project-desc { margin-bottom: 20px; font-size: 1.05rem; font-weight: 600; }
+        
+        .btn-elegant { display: inline-flex; align-items: center; justify-content:center; gap: 10px; padding: 12px 25px; font-size: 1rem; font-weight: 800; text-decoration: none; border-radius: 30px; transition: all 0.2s; cursor: pointer; width: max-content; border:none; }
+        .btn-elegant:hover { transform: translateY(-2px); }
+
+        /* Slider Foto */
+        .photo-slider { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; margin-top: 15px; scrollbar-width: thin; scrollbar-color: rgba(128,128,128,0.5) transparent; }
+        .photo-slider::-webkit-scrollbar { height: 6px; }
+        .photo-slider::-webkit-scrollbar-thumb { background-color: rgba(128,128,128,0.5); border-radius: 10px;}
+        .aero-frame { flex: 0 0 300px; background: rgba(255,255,255,0.8); padding: 8px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.5s ease; }
+        .aero-frame img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; display: block; }
+
+        /* --- KONTAK FORM & VALIDASI --- */
+        .contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; text-align: left; }
+        .input-glass { background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5); padding: 12px 15px; border-radius: 10px; color: inherit; font-family: inherit; font-size: 1rem; font-weight: 600; outline: none; transition: all 0.3s; }
+        .input-glass::placeholder { color: rgba(0,0,0,0.5); }
+        .theme-glass .input-glass::placeholder { color: rgba(255,255,255,0.5); }
+        .input-glass:focus { background: rgba(255,255,255,0.5); border-color: #0073e6; }
+        .theme-glass .input-glass:focus { border-color: #38bdf8; }
+        
+        .btn-submit { background: linear-gradient(180deg, #7be038 0%, #46a312 100%); border: 1px solid #46a312; color: white; width: 100%; justify-content: center; }
+        .theme-glass .btn-submit { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #38bdf8; }
+        .theme-glass .btn-submit:hover { background: rgba(56, 189, 248, 0.4); }
+
+        /* Animasi Goyang (Error Validation) */
+        .error-shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; border-color: #ff5f56 !important; background: rgba(255,95,86,0.1) !important; color: #ff5f56;}
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+
+        /* Custom Notifikasi (Toast) - DI TENGAH KOTAK FORM */
+        .custom-toast {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+            width: max-content; max-width: 90%;
+            background: rgba(255, 95, 86, 0.95); backdrop-filter: blur(15px); color: white;
+            padding: 15px 25px; border-radius: 12px; font-weight: 800; font-size: 0.95rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.5);
+            opacity: 0; pointer-events: none; z-index: 10;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; gap: 12px;
+        }
+        .custom-toast.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        .custom-toast.success { background: rgba(70, 163, 18, 0.95); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; } .glass-panel { padding: 25px; } nav { padding: 15px 20px; }
+            .aero-frame { flex: 0 0 250px; } .tag-container { gap: 10px; } .code-tag { padding: 8px 15px; font-size: 0.9rem;}
+            .slider-container { width: 280px; } .slider-text { margin-left: 20px; font-size: 0.9rem; }
+            .nav-controls { gap: 8px; } .top-btn { padding: 5px 12px; font-size: 0.9rem;}
+            .custom-toast { font-size: 0.85rem; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body class="theme-aero"> 
+
+    <div class="glass-bubbles">
+        <div class="g-bubble gb-blue"></div>
+        <div class="g-bubble gb-purple"></div>
+        <div class="g-bubble gb-yellow"></div>
+    </div>
+
+    <div class="hill-bg-back hill-bg"></div>
+    <div class="hill-bg-front hill-bg"></div>
+    <div class="aero-bubbles" id="bubble-container"></div> 
+
+    <div id="splash-screen">
+        <h1 class="splash-title">PORTFOLIO</h1>
+        <div class="slider-container" id="slider-bg">
+            <div class="slider-text" id="slider-text" data-i18n="slide_txt">Geser untuk masuk &gt;&gt;</div>
+            <div class="slider-thumb" id="slider-thumb">
+                <svg viewBox="0 0 24 24"><path d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo">Razuhfgkruay</div>
+        <div class="nav-controls">
+            <button id="theme-toggle" class="top-btn" data-i18n="theme_btn">Mode: Aero</button>
+            
+            <div class="custom-dropdown" id="lang-dropdown">
+                <button class="top-btn" id="lang-toggle">ID 🇮🇩</button>
+                <div class="custom-dropdown-menu">
+                    <div class="custom-dropdown-item" data-value="id">ID 🇮🇩</div>
+                    <div class="custom-dropdown-item" data-value="en">EN 🇬🇧</div>
+                    <div class="custom-dropdown-item" data-value="ja">JP 🇯🇵</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" style="display: none; opacity: 0; transition: opacity 1s;">
+        
+        <section class="glass-panel hero">
+            <img src="foto-profil.jpg" alt="Foto Profil" class="profile-img">
+            <h1 class="glass-text" id="profile-name">Muhammad Razani Yusuf</h1>
+            <h2 id="profile-alias">a.k.a Razuhfgkruay</h2>
+            <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; font-weight: 600;" data-i18n="bio_text">Halo! Aku siswa kelas 11 (18 tahun) yang sangat antusias di dunia web development. Berfokus pada penggabungan antarmuka estetis dengan logika pemrograman yang efisien. Mempersiapkan langkah menuju karir sebagai Software Engineer di Google.</p>
+        </section>
+
+        <section class="glass-panel skills-container">
+            <h2 class="glass-text" style="font-size: 2rem; margin-bottom: 10px;" data-i18n="skills_title">Demonstrasi Logika</h2>
+            <p style="margin-bottom: 25px; opacity: 0.9; font-weight: 600;" data-i18n="skills_desc">Klik pada bahasa pemrograman di bawah untuk melihat arsitektur kode.</p>
+            
+            <div class="tag-container">
+                <button class="code-tag" onclick="typeCode('html')">HTML</button>
+                <button class="code-tag" onclick="typeCode('css')">CSS</button>
+                <button class="code-tag" onclick="typeCode('js')">JavaScript</button>
+                <button class="code-tag" onclick="typeCode('gas')">Google Script</button>
+            </div>
+
+            <div id="terminal" class="code-terminal">
+                <div class="terminal-header" id="terminal-header">
+                    <span class="mac-btn mac-red"></span><span class="mac-btn mac-yellow"></span><span class="mac-btn mac-green"></span>
+                    <span id="term-title" style="margin-left: 10px;">Terminal</span>
+                </div>
+                <div class="typewriter-text"><span id="code-output" data-i18n="term_wait">Menunggu input... (Ketik rahasia di keyboard)</span><span class="cursor"></span></div>
+            </div>
+        </section>
+
+        <section class="glass-panel">
+            <h2 class="glass-text" style="font-size: 1.8rem; margin-bottom: 20px;" data-i18n="projects_title">Proyek & Implementasi</h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 9h-2V7c0-1.1-.9-2-2-2h-2V3c0-.55-.45-1-1-1H10c-.55 0-1 .45-1 1v2H7c-1.1 0-2 .9-2 2v2H3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2v2c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-2h2c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-9 9H8v-2h4v2zm4-4H8v-2h8v2zm0-4H8V8h8v2z"/></svg>
+                    <h3 class="glass-text" data-i18n="proj_1_title">Kalytera AI</h3>
+                </div>
+                <p class="project-desc" data-i18n="proj_1_desc">Mengembangkan chatbot AI interaktif secara mandiri. Mengelola konfigurasi API pihak ketiga dan memastikan aplikasi berjalan secara responsif melalui platform Vercel.</p>
+                <a href="https://kalytera-ai.vercel.app/" target="_blank" class="btn-elegant">
+                    <span data-i18n="launch_btn">Buka Aplikasi AI</span>
+                </a>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid rgba(128,128,128,0.2); margin: 30px 0;">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3h-4V5h4zM9 5v3H5V5h4zm-4 5h4v4H5v-4zm0 6h4v3H5v-3zm6 3v-3h4v3h-4zm0-5v-4h4v4h-4zm6 5v-3h4v3h-4zm4-5h-4v-4h4v4z"/></svg>
+                    <h3 class="glass-text" data-i18n="proj_2_title">Sistem Absensi (IPM)</h3>
+                </div>
+                <p class="project-desc" data-i18n="proj_2_desc">Merancang arsitektur pendataan organisasi berupa one way access dengan UI&UX yang menarik dan mudah di mengerti menggunakan HTML,CSS,JS, serta ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.</p>
+                
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px; font-weight: 700;" data-i18n="swipe_hint">Geser horizontal untuk melihat antarmuka (UI):</p>
+                
+                <div class="photo-slider">
+                    <div class="aero-frame"><img src="absensi-1.jpg" alt="UI 1"></div>
+                    <div class="aero-frame"><img src="absensi-2.jpg" alt="UI 2"></div>
+                    <div class="aero-frame"><img src="absensi-3.jpg" alt="UI 3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel" style="text-align: center; position: relative;">
+            <h2 class="glass-text" style="font-size: 1.8rem; margin-bottom: 10px;" data-i18n="contact_title">Kirim Pesan ke Database</h2>
+            <p style="margin-bottom: 25px; opacity: 0.9; font-weight: 600;" data-i18n="contact_desc">Pesan di bawah ini akan langsung masuk ke Google Sheets milikku berkat integrasi API.</p>
+            
+            <form class="contact-form" id="live-form" novalidate>
+                <input type="text" id="input-nama" name="nama" class="input-glass" placeholder="Nama Anda" data-i18n-placeholder="ph_name">
+                <input type="email" id="input-email" name="email" class="input-glass" placeholder="Email Anda" data-i18n-placeholder="ph_email">
+                <textarea id="input-pesan" name="pesan" class="input-glass" rows="4" placeholder="Ketik pesan di sini..." data-i18n-placeholder="ph_msg"></textarea>
+                <button type="submit" class="btn-elegant btn-submit" id="submit-btn">
+                    <span data-i18n="contact_btn">Kirim Pesan</span>
+                </button>
+            </form>
+
+            <div class="custom-toast" id="custom-toast">
+                <svg id="toast-icon" style="width: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"></svg>
+                <span id="toast-msg">Pesan Notifikasi</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // --- 1. LOGIKA SLIDE TO UNLOCK (SPLASH SCREEN) ---
+        const sliderThumb = document.getElementById('slider-thumb');
+        const splashScreen = document.getElementById('splash-screen');
+        const mainContent = document.getElementById('main-content');
+        let isDragging = false; let startX, initialLeft;
+        const maxScroll = 340 - 50 - 10; 
+
+        const startDrag = (e) => { isDragging = true; startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; initialLeft = sliderThumb.offsetLeft; sliderThumb.style.transition = 'none'; };
+        const drag = (e) => {
+            if (!isDragging) return; e.preventDefault();
+            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; let moveX = currentX - startX + initialLeft;
+            if (moveX < 5) moveX = 5; if (moveX > maxScroll) moveX = maxScroll; sliderThumb.style.left = `${moveX}px`;
+            if (moveX >= maxScroll - 5) { isDragging = false; unlockSystem(); }
+        };
+        const endDrag = () => { if (!isDragging) return; isDragging = false; sliderThumb.style.transition = 'left 0.3s ease'; sliderThumb.style.left = '5px'; };
+
+        sliderThumb.addEventListener('mousedown', startDrag); document.addEventListener('mousemove', drag); document.addEventListener('mouseup', endDrag);
+        sliderThumb.addEventListener('touchstart', startDrag, {passive: false}); document.addEventListener('touchmove', drag, {passive: false}); document.addEventListener('touchend', endDrag);
+
+        function unlockSystem() {
+            sliderThumb.style.display = 'none'; document.getElementById('slider-text').textContent = "Akses Diberikan...";
+            setTimeout(() => {
+                splashScreen.style.transform = 'scale(1.2)'; splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none'; mainContent.style.display = 'flex';
+                    void mainContent.offsetWidth; mainContent.style.opacity = '1'; createAeroBubbles();
+                }, 800);
+            }, 500);
+        }
+
+        // --- 2. LOGIKA GANTI TEMA (AERO vs GLASSMORPHISM) ---
+        const themeBtn = document.getElementById('theme-toggle');
+        let currentTheme = 'aero';
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.remove('theme-aero', 'theme-glass', 'theme-google');
+            if (currentTheme === 'aero') {
+                document.body.classList.add('theme-glass'); themeBtn.textContent = 'Mode: Glass'; currentTheme = 'glass';
+            } else {
+                document.body.classList.add('theme-aero'); themeBtn.textContent = 'Mode: Aero'; currentTheme = 'aero';
+            }
+        });
+
+        // --- 3. EASTER EGG (KETIK "GOOGLE") ---
+        let secretCode = "";
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+            secretCode += e.key.toLowerCase(); if (secretCode.length > 6) secretCode = secretCode.substring(1);
+            if (secretCode === "google") {
+                document.body.classList.remove('theme-aero', 'theme-glass'); document.body.classList.add('theme-google');
+                const terminal = document.getElementById('terminal'); const output = document.getElementById('code-output');
+                terminal.style.display = 'block'; document.getElementById('term-title').textContent = "Google_Protocol.exe";
+                output.textContent = "> BYPASS ACCEPTED.\n> INITIATING GOOGLE PROTOCOL...\n> WELCOME, FUTURE ENGINEER.";
+                showToast("Easter Egg Ditemukan! Tema Google diaktifkan.", false);
+            }
+        });
+
+        // --- 4. CUSTOM DROPDOWN BAHASA & TRANSLASI (i18n) ---
+        const langDropdown = document.getElementById('lang-dropdown');
+        const langToggle = document.getElementById('lang-toggle');
+        const langItems = document.querySelectorAll('.custom-dropdown-item');
+
+        langToggle.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('active'); });
+        window.addEventListener('click', () => { if (langDropdown.classList.contains('active')) langDropdown.classList.remove('active'); });
+
+        const translations = {
+            id: {
+                name: "Muhammad Razani Yusuf", alias: "a.k.a Razuhfgkruay", slide_txt: "Geser untuk masuk >>", theme_btn: "Mode: Aero",
+                bio_text: "Halo! Aku siswa kelas 11 (18 tahun) yang sangat antusias di dunia web development. Berfokus pada penggabungan antarmuka estetis dengan logika pemrograman yang efisien. Mempersiapkan langkah menuju karir sebagai Software Engineer di Google.",
+                skills_title: "Demonstrasi Logika", skills_desc: "Klik pada bahasa pemrograman di bawah untuk melihat arsitektur kode.",
+                projects_title: "Proyek & Implementasi",
+                proj_1_title: "Kalytera AI", proj_1_desc: "Mengembangkan chatbot AI interaktif secara mandiri. Mengelola konfigurasi API pihak ketiga dan memastikan aplikasi berjalan secara responsif melalui platform Vercel.", launch_btn: "Buka Aplikasi AI",
+                proj_2_title: "Sistem Absensi (IPM)", proj_2_desc: "Merancang arsitektur pendataan organisasi menggunakan ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.", swipe_hint: "Geser horizontal untuk melihat antarmuka (UI):",
+                contact_title: "Kirim Pesan ke Database", contact_desc: "Pesan di bawah ini akan langsung masuk ke Google Sheets milikku berkat integrasi API.", contact_btn: "Kirim Pesan", term_wait: "Menunggu input... (Ketik rahasia di keyboard)",
+                ph_name: "Nama Anda", ph_email: "Email Anda", ph_msg: "Ketik pesan di sini...",
+                err_empty: "Harap isi semua kolom!", err_email: "Format email tidak valid (harus pakai @ dan domain)."
+            },
+            en: {
+                name: "Muhammad Razani Yusuf", alias: "a.k.a Razuhfgkruay", slide_txt: "Slide to unlock >>", theme_btn: "Mode: Aero",
+                bio_text: "Hello! I'm an 11th-grade student (18yo) deeply enthusiastic about web development. I focus on combining aesthetic interfaces with efficient programming logic. Preparing my steps towards a Software Engineering career at Google.",
+                skills_title: "Logic Demonstration", skills_desc: "Click on a programming language below to view the code architecture.",
+                projects_title: "Projects & Implementations",
+                proj_1_title: "Kalytera AI", proj_1_desc: "Independently developed an interactive AI chatbot. Managed third-party API configurations and ensured responsive application performance via Vercel.", launch_btn: "Launch AI App",
+                proj_2_title: "Attendance System (IPM)", proj_2_desc: "Designed an organizational data architecture using the Google Sheets ecosystem. Programmed Google Apps Script algorithms for automatic data recapitulation.", swipe_hint: "Swipe horizontally to view the UI:",
+                contact_title: "Send to Database", contact_desc: "Messages submitted here will go directly to my Google Sheets via API integration.", contact_btn: "Send Message", term_wait: "Waiting for input... (Type the secret on keyboard)",
+                ph_name: "Your Name", ph_email: "Your Email", ph_msg: "Type your message here...",
+                err_empty: "Please fill in all fields!", err_email: "Invalid email format (must include @ and domain)."
+            },
+            ja: {
+                name: "ムハンマド・ラザニ・ユスフ", alias: "別名: Razuhfgkruay", slide_txt: "スライドしてロック解除 >>", theme_btn: "モード: エアロ",
+                bio_text: "こんにちは！Web開発に熱心な高校2年生（18歳）です。美しいインターフェースと効率的なプログラミングロジックの組み合わせに焦点を当てています。Googleのソフトウェアエンジニアとしてのキャリアに向けて準備を進めています。",
+                skills_title: "ロジックのデモ", skills_desc: "下のプログラミング言語をクリックして、コードアーキテクチャを表示します。",
+                projects_title: "プロジェクトと実装",
+                proj_1_title: "Kalytera AI", proj_1_desc: "インタラクティブなAIチャットボットを独自に開発しました。サードパーティAPIを管理し、Vercelを介して応答性の高いパフォーマンスを確保しました。", launch_btn: "AIアプリを開く",
+                proj_2_title: "自動出欠システム (IPM)", proj_2_desc: "Googleスプレッドシートを使用して組織データアーキテクチャを設計しました。データ要約のためのGoogle Apps Scriptアルゴリズムをプログラムしました。", swipe_hint: "横にスワイプしてUIを表示:",
+                contact_title: "データベースに送信", contact_desc: "API統合により、ここで送信されたメッセージは直接Googleスプレッドシートに送信されます。", contact_btn: "メッセージを送信", term_wait: "入力を待っています...（キーボードで秘密を入力してください）",
+                ph_name: "お名前", ph_email: "メールアドレス", ph_msg: "ここにメッセージを入力...",
+                err_empty: "すべてのフィールドに入力してください！", err_email: "無効なメール形式（@とドメインを含める必要があります）。"
+            }
+        };
+
+        let currentLang = 'id';
+
+        langItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-value');
+                currentLang = lang;
+                langToggle.innerHTML = e.target.innerHTML;
+                
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang][key]) el.textContent = translations[lang][key];
+                });
+
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-placeholder');
+                    if (translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
+                });
+                
+                document.getElementById('profile-name').textContent = translations[lang].name;
+                document.getElementById('profile-alias').textContent = translations[lang].alias;
+
+                if(currentTheme === 'glass') { document.getElementById('theme-toggle').textContent = lang === 'ja' ? 'モード: ガラス' : 'Mode: Glass'; }
+            });
+        });
+
+        // --- 5. LOGIKA KODE ANIMASI TERMINAL ---
+        const codeSnippets = {
+            html: `<!DOCTYPE html>\n<html lang="id">\n<head>\n  <meta charset="UTF-8">\n  <title>Arsitektur UI</title>\n</head>\n<body>\n  <main class="glass-container">\n    <h1>Sistem Siap</h1>\n  </main>\n</body>\n</html>`,
+            css: `/* UI Design Architecture */\n.glass-container {\n  background: rgba(15, 23, 42, 0.4);\n  backdrop-filter: blur(20px);\n  border-radius: 12px;\n  border: 1px solid rgba(255,255,255,0.1);\n  box-shadow: 0 10px 30px rgba(0,0,0,0.5);\n  transition: all 0.3s ease;\n}`,
+            js: `// Frontend Logic Handler\nconst initApp = async () => {\n  console.log("Menghubungkan ke server...");\n  await fetchData();\n  renderUI();\n};\n\ndocument.addEventListener('DOMContentLoaded', initApp);`,
+            gas: `// Backend Automation System\nfunction processData(e) {\n  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();\n  const timestamp = new Date();\n  \n  sheet.appendRow([timestamp, e.parameter.id, "Valid"]);\n  return ContentService.createTextOutput("Sukses.");\n}`
+        };
+
+        let typeInterval;
+        function typeCode(langKey) {
+            const terminal = document.getElementById('terminal'); const output = document.getElementById('code-output');
+            terminal.style.display = 'block'; document.getElementById('term-title').textContent = `script_${langKey}.js`; output.textContent = ''; 
+            clearInterval(typeInterval); const text = codeSnippets[langKey]; let i = 0;
+            typeInterval = setInterval(() => { if (i < text.length) { output.textContent += text.charAt(i); i++; } else { clearInterval(typeInterval); } }, 20);
+        }
+
+        // --- 6. GELEMBUNG AERO DINAMIS ---
+        function createAeroBubbles() {
+            const container = document.getElementById('bubble-container');
+            setInterval(() => {
+                if (getComputedStyle(container).display !== 'none') {
+                    const bubble = document.createElement('div'); bubble.classList.add('a-bubble');
+                    const size = Math.random() * 40 + 10;
+                    bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
+                    bubble.style.left = `${Math.random() * 100}vw`; bubble.style.animationDuration = `${Math.random() * 8 + 6}s`;
+                    container.appendChild(bubble); setTimeout(() => { bubble.remove(); }, 14000);
+                }
+            }, 1000); 
+        }
+
+        // --- 7. ANIMATED TOAST & CUSTOM VALIDATION ---
+        const toast = document.getElementById('custom-toast');
+        const toastMsg = document.getElementById('toast-msg');
+        const toastIcon = document.getElementById('toast-icon');
+
+        function showToast(message, isError = true) {
+            toastMsg.textContent = message;
+            if(isError) {
+                toast.classList.remove('success');
+                toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
+            } else {
+                toast.classList.add('success');
+                toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>';
+            }
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        }
+
+        // --- 8. LIVE FORM (GOOGLE SHEETS) ---
+        const scriptURL = 'MASUKKAN_LINK_WEB_APP_GOOGLE_SCRIPT_KAMU_DISINI'; 
+        const form = document.getElementById('live-form');
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            const iNama = document.getElementById('input-nama');
+            const iEmail = document.getElementById('input-email');
+            const iPesan = document.getElementById('input-pesan');
+            let isValid = true;
+            
+            if(iNama.value.trim() === '' || iEmail.value.trim() === '' || iPesan.value.trim() === '') {
+                showToast(translations[currentLang].err_empty, true);
+                if(iNama.value.trim() === '') iNama.classList.add('error-shake');
+                if(iEmail.value.trim() === '') iEmail.classList.add('error-shake');
+                if(iPesan.value.trim() === '') iPesan.classList.add('error-shake');
+                isValid = false;
+            } else if (!iEmail.value.includes('@') || !iEmail.value.includes('.')) {
+                showToast(translations[currentLang].err_email, true);
+                iEmail.classList.add('error-shake');
+                isValid = false;
+            }
+
+            setTimeout(() => { iNama.classList.remove('error-shake'); iEmail.classList.remove('error-shake'); iPesan.classList.remove('error-shake'); }, 500);
+            if(!isValid) return;
+
+            document.getElementById('submit-btn').innerHTML = '<span class="cursor" style="margin:0; width:15px; height:15px; border-radius:50%;"></span>'; 
+            
+            if(scriptURL === 'MASUKKAN_LINK_WEB_APP_GOOGLE_SCRIPT_KAMU_DISINI') {
+                setTimeout(() => { 
+                    showToast("Simulasi: Pesan berhasil (Masukkan link asli di HTML).", false);
+                    form.reset(); 
+                    document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
+                }, 1500);
+                return;
+            }
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                showToast("Pesan berhasil masuk ke database!", false);
+                form.reset();
+                document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
+            })
+            .catch(error => {
+                showToast("Gagal mengirim pesan ke server.", true);
+                document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
+            });
+        });
+    </script>
+</body>
+</html>
