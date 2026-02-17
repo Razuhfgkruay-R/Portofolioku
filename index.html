@@ -283,7 +283,7 @@
 
             <hr style="border: 0; border-top: 1px solid rgba(128,128,128,0.2); margin: 30px 0;">
 
-            <div class="project-card">
+                        <div class="project-card">
                 <div class="project-header">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3h-4V5h4zM9 5v3H5V5h4zm-4 5h4v4H5v-4zm0 6h4v3H5v-3zm6 3v-3h4v3h-4zm0-5v-4h4v4h-4zm6 5v-3h4v3h-4zm4-5h-4v-4h4v4z"/></svg>
                     <h3 class="glass-text" data-i18n="proj_2_title">Sistem Absensi (IPM)</h3>
@@ -295,21 +295,25 @@
                     <div class="aero-frame"><img src="absensi-1.jpg" alt="UI 1"></div>
                     <div class="aero-frame"><img src="absensi-2.jpg" alt="UI 2"></div>
                     <div class="aero-frame"><img src="absensi-3.jpg" alt="UI 3"></div>
-                    <div class="aero-frame"><img src="absensi-4.jpg" alt="UI 3"></div>
+                    <div class="aero-frame"><img src="absensi-4.jpg" alt="UI 4"></div>
                 </div>
+
+                <div class="project-header" style="margin-top: 30px;">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3h-4V5h4zM9 5v3H5V5h4zm-4 5h4v4H5v-4zm0 6h4v3H5v-3zm6 3v-3h4v3h-4zm0-5v-4h4v4h-4zm6 5v-3h4v3h-4zm4-5h-4v-4h4v4z"/></svg>
-                    <h3 class="glass-text" data-i18n="proj_2_title">Rekap Absensi Otomatis (IPM)</h3>
+                    <h3 class="glass-text" data-i18n="proj_3_title">Rekap Absensi Otomatis (IPM)</h3>
                 </div>
                 <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px; font-weight: 700;" data-i18n="swipe_hint">Geser horizontal untuk melihat antarmuka (UI):</p>
+                
                 <div class="photo-slider">
                     <div class="aero-frame"><img src="rekap-1.jpg" alt="UI 1"></div>
                     <div class="aero-frame"><img src="rekap-2.jpg" alt="UI 2"></div>
                     <div class="aero-frame"><img src="rekap-3.jpg" alt="UI 3"></div>
-                     <div class="aero-frame"><img src="rekap-4.jpg" alt="UI 3"></div>
-                     <div class="aero-frame"><img src="rekap-5.jpg" alt="UI 3"></div>
-                     <div class="aero-frame"><img src="rekap-6.jpg" alt="UI 3"></div>
+                    <div class="aero-frame"><img src="rekap-4.jpg" alt="UI 4"></div>
+                    <div class="aero-frame"><img src="rekap-5.jpg" alt="UI 5"></div>
+                    <div class="aero-frame"><img src="rekap-6.jpg" alt="UI 6"></div>
                 </div>
             </div>
+
         </section>
 
         <section class="glass-panel" style="text-align: center; position: relative;">
@@ -391,7 +395,6 @@
                 showToast("Easter Egg Ditemukan! Tema Google diaktifkan.", false);
             }
         });
-
         // --- 4. CUSTOM DROPDOWN BAHASA & TRANSLASI (i18n) ---
         const langDropdown = document.getElementById('lang-dropdown');
         const langToggle = document.getElementById('lang-toggle');
@@ -407,7 +410,9 @@
                 skills_title: "Demonstrasi Logika", skills_desc: "Klik pada bahasa pemrograman di bawah untuk melihat arsitektur kode.",
                 projects_title: "Proyek & Implementasi",
                 proj_1_title: "Kalytera AI", proj_1_desc: "Mengembangkan chatbot AI interaktif secara mandiri. Mengelola konfigurasi API pihak ketiga dan memastikan aplikasi berjalan secara responsif melalui platform Vercel.", launch_btn: "Buka Aplikasi AI",
-                proj_2_title: "Sistem Absensi (IPM)", proj_2_desc: "Merancang arsitektur pendataan organisasi menggunakan ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.", swipe_hint: "Geser horizontal untuk melihat antarmuka (UI):",
+                proj_2_title: "Sistem Absensi (IPM)", proj_2_desc: "Merancang arsitektur pendataan organisasi berupa one way access dengan UI&UX yang menarik dan mudah di mengerti menggunakan HTML,CSS,JS, serta ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.", 
+                swipe_hint: "Geser horizontal untuk melihat antarmuka (UI):",
+                proj_3_title: "Rekap Absensi Otomatis (IPM)", // <-- Ini tambahan baru
                 contact_title: "Kirim Pesan ke Database", contact_desc: "Pesan di bawah ini akan langsung masuk ke Google Sheets milikku berkat integrasi API.", contact_btn: "Kirim Pesan", term_wait: "Menunggu input... (Ketik rahasia di keyboard)",
                 ph_name: "Nama Anda", ph_email: "Email Anda", ph_msg: "Ketik pesan di sini...",
                 err_empty: "Harap isi semua kolom!", err_email: "Format email tidak valid (harus pakai @ dan domain)."
@@ -418,7 +423,9 @@
                 skills_title: "Logic Demonstration", skills_desc: "Click on a programming language below to view the code architecture.",
                 projects_title: "Projects & Implementations",
                 proj_1_title: "Kalytera AI", proj_1_desc: "Independently developed an interactive AI chatbot. Managed third-party API configurations and ensured responsive application performance via Vercel.", launch_btn: "Launch AI App",
-                proj_2_title: "Attendance System (IPM)", proj_2_desc: "Designed an organizational data architecture using the Google Sheets ecosystem. Programmed Google Apps Script algorithms for automatic data recapitulation.", swipe_hint: "Swipe horizontally to view the UI:",
+                proj_2_title: "Attendance System (IPM)", proj_2_desc: "Designed a one-way access organizational data architecture with an attractive UI/UX using HTML, CSS, JS, and the Google Sheets ecosystem. Programmed Google Apps Script algorithms for automatic data recapitulation.", 
+                swipe_hint: "Swipe horizontally to view the UI:",
+                proj_3_title: "Automated Attendance Recapitulation (IPM)", // <-- Ini tambahan baru
                 contact_title: "Send to Database", contact_desc: "Messages submitted here will go directly to my Google Sheets via API integration.", contact_btn: "Send Message", term_wait: "Waiting for input... (Type the secret on keyboard)",
                 ph_name: "Your Name", ph_email: "Your Email", ph_msg: "Type your message here...",
                 err_empty: "Please fill in all fields!", err_email: "Invalid email format (must include @ and domain)."
@@ -429,7 +436,9 @@
                 skills_title: "ロジックのデモ", skills_desc: "下のプログラミング言語をクリックして、コードアーキテクチャを表示します。",
                 projects_title: "プロジェクトと実装",
                 proj_1_title: "Kalytera AI", proj_1_desc: "インタラクティブなAIチャットボットを独自に開発しました。サードパーティAPIを管理し、Vercelを介して応答性の高いパフォーマンスを確保しました。", launch_btn: "AIアプリを開く",
-                proj_2_title: "自動出欠システム (IPM)", proj_2_desc: "Googleスプレッドシートを使用して組織データアーキテクチャを設計しました。データ要約のためのGoogle Apps Scriptアルゴリズムをプログラムしました。", swipe_hint: "横にスワイプしてUIを表示:",
+                proj_2_title: "自動出欠システム (IPM)", proj_2_desc: "HTML、CSS、JS、およびGoogleスプレッドシートエコシステムを使用して、魅力的でわかりやすいUI / UXを備えた一方向アクセスの組織データアーキテクチャを設計しました。 データ要約のためのGoogle Apps Scriptアルゴリズムをプログラムしました。", 
+                swipe_hint: "横にスワイプしてUIを表示:",
+                proj_3_title: "自動出欠集計 (IPM)", // <-- Ini tambahan baru
                 contact_title: "データベースに送信", contact_desc: "API統合により、ここで送信されたメッセージは直接Googleスプレッドシートに送信されます。", contact_btn: "メッセージを送信", term_wait: "入力を待っています...（キーボードで秘密を入力してください）",
                 ph_name: "お名前", ph_email: "メールアドレス", ph_msg: "ここにメッセージを入力...",
                 err_empty: "すべてのフィールドに入力してください！", err_email: "無効なメール形式（@とドメインを含める必要があります）。"
