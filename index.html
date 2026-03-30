@@ -376,7 +376,7 @@
 
     <script>
         
-                // --- 1. LOGIKA AUDIO & SLIDE TO UNLOCK ---
+                        // --- 1. LOGIKA AUDIO & SLIDE TO UNLOCK ---
         const sliderThumb = document.getElementById('slider-thumb');
         const splashScreen = document.getElementById('splash-screen');
         const mainContent = document.getElementById('main-content');
@@ -385,24 +385,48 @@
         
         let isDragging = false; let startX, initialLeft;
         const maxScroll = 340 - 50 - 10; 
+        let audioUnlocked = false; // Penanda apakah audio sudah diizinkan browser
 
-        // TRIK ANTI-BLOCK BROWSER: Pancing audio saat layar pertama kali disentuh/diklik
-        const unlockAudio = () => {
-            bgMusic.play().then(() => { bgMusic.pause(); }).catch(() => {});
-            sliderThumb.removeEventListener('mousedown', unlockAudio);
-            sliderThumb.removeEventListener('touchstart', unlockAudio);
+        // EVENT MULAI GESER
+        const startDrag = (e) => { 
+            isDragging = true; 
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; 
+            initialLeft = sliderThumb.offsetLeft; 
+            sliderThumb.style.transition = 'none'; 
+            
+            // TRIK AMPUH: Play musik di background dengan volume 0 (mute) saat pertama kali disentuh.
+            // Karena ini adalah respons langsung dari klik/sentuhan, browser akan mengizinkannya!
+            if (!audioUnlocked) {
+                bgMusic.volume = 0;
+                bgMusic.play().catch(err => console.log("Menunggu interaksi penuh..."));
+            }
         };
-        sliderThumb.addEventListener('mousedown', unlockAudio);
-        sliderThumb.addEventListener('touchstart', unlockAudio, {passive: true});
 
-        const startDrag = (e) => { isDragging = true; startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; initialLeft = sliderThumb.offsetLeft; sliderThumb.style.transition = 'none'; };
+        // EVENT SAAT DIGESER
         const drag = (e) => {
             if (!isDragging) return; e.preventDefault();
             const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; let moveX = currentX - startX + initialLeft;
             if (moveX < 5) moveX = 5; if (moveX > maxScroll) moveX = maxScroll; sliderThumb.style.left = `${moveX}px`;
-            if (moveX >= maxScroll - 5) { isDragging = false; unlockSystem(); }
+            
+            // JIKA SAMPAI UJUNG
+            if (moveX >= maxScroll - 5) { 
+                isDragging = false; 
+                unlockSystem(); 
+            }
         };
-        const endDrag = () => { if (!isDragging) return; isDragging = false; sliderThumb.style.transition = 'left 0.3s ease'; sliderThumb.style.left = '5px'; };
+
+        // EVENT DILEPAS
+        const endDrag = () => { 
+            if (!isDragging) return; 
+            isDragging = false; 
+            sliderThumb.style.transition = 'left 0.3s ease'; 
+            sliderThumb.style.left = '5px'; 
+            
+            // Kalau batal geser sampai ujung, matikan lagi biar gak jalan diam-diam
+            if (!audioUnlocked) {
+                bgMusic.pause();
+            }
+        };
 
         sliderThumb.addEventListener('mousedown', startDrag); document.addEventListener('mousemove', drag); document.addEventListener('mouseup', endDrag);
         sliderThumb.addEventListener('touchstart', startDrag, {passive: false}); document.addEventListener('touchmove', drag, {passive: false}); document.addEventListener('touchend', endDrag);
@@ -410,11 +434,15 @@
         function unlockSystem() {
             sliderThumb.style.display = 'none'; document.getElementById('slider-text').textContent = "Akses Diberikan...";
             
-            // Putar musik otomatis (Sekarang pasti jalan karena sudah di-unlock di atas)
+            // Kunci audio terbuka! Tinggal naikkan volumenya karena musik sudah berjalan di background
+            audioUnlocked = true;
             bgMusic.volume = 0.5;
-            bgMusic.play().then(() => {
-                musicToggle.textContent = translations[currentLang].music_pause;
-            }).catch(e => console.log("Audio diblokir browser"));
+            
+            // Backup jika browser super ketat dan sempat mem-pause
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log("Tetap diblokir:", e));
+            }
+            musicToggle.textContent = translations[currentLang].music_pause;
 
             setTimeout(() => {
                 splashScreen.style.transform = 'scale(1.2)'; splashScreen.style.opacity = '0';
