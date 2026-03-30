@@ -180,8 +180,9 @@
         .reveal-on-scroll { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
 
-        /* --- AI FLOATING WIDGET STYLES (BASE/DESKTOP) --- */
-        #ai-window { display: none; flex-direction: column; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; position: fixed; bottom: 80px; right: 20px; width: 350px; height: 480px; z-index: 999; padding: 15px; }
+               /* --- AI FLOATING WIDGET STYLES (BASE/DESKTOP) --- */
+        /* Ukuran desktop diperkecil jadi 300x400 */
+        #ai-window { display: none; flex-direction: column; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; position: fixed; bottom: 80px; right: 20px; width: 300px; height: 400px; z-index: 999; padding: 15px; }
         #ai-window.show { display: flex; opacity: 1; transform: translateY(0); }
         #ai-toggle-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; }
         #ai-toggle-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4); }
@@ -192,9 +193,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; } 
             .glass-panel { padding: 25px; } 
-            main { margin-top: 140px; } /* Memberi ruang lebih untuk nav bar yang meluas */
+            main { margin-top: 140px; } 
             
-            /* Navigasi atas dibikin lebih compact & terpusat */
             nav { padding: 15px 10px; flex-wrap: wrap; justify-content: center; gap: 10px; }
             .nav-controls { gap: 8px; justify-content: center; width: 100%; } 
             .top-btn { padding: 5px 10px; font-size: 0.8rem;}
@@ -204,23 +204,24 @@
             .slider-container { width: 280px; } .slider-text { margin-left: 20px; font-size: 0.9rem; }
             .custom-toast { font-size: 0.85rem; padding: 12px 20px; }
             
-            /* AI Window di HP jadi model Bottom Sheet */
+            /* AI Window di HP dibikin mengambang dan lebih kecil (tinggi cuma 50%) */
             #ai-window { 
-                width: 100vw; right: 0; left: 0; height: 75vh; 
-                bottom: 0; /* Base position di bawah */
-                transform: translateY(100%); /* Disembunyikan ke bawah layar */
-                border-radius: 25px 25px 0 0; border: none; border-top: 1px solid rgba(255,255,255,0.3);
-                padding: 20px 15px; opacity: 1; /* Opacity selalu 1 untuk efek sliding */
+                width: 90vw; right: 5vw; left: 5vw; height: 50vh; 
+                bottom: 75px; transform: translateY(20px) scale(0.95);
+                border-radius: 20px; border: 1px solid rgba(255,255,255,0.3);
+                padding: 15px; opacity: 0; 
             }
-            #ai-window.show { transform: translateY(0); } /* Meluncur ke atas */
+            #ai-window.show { transform: translateY(0) scale(1); opacity: 1; } 
             #ai-toggle-btn { bottom: 15px; right: 15px; padding: 10px 15px; font-size: 0.85rem; }
         }
+
+    
     </style>
 </head>
 <body class="theme-aero"> 
 
     <audio id="bg-music" loop>
-        <source src="frutiger aero.mp3" type="audio/mpeg">
+        <sourfrutiger aeroger aero.mp3" type="audio/mpeg">
     </audio>
 
     <div class="glass-bubbles">
@@ -374,7 +375,8 @@
     </div>
 
     <script>
-        // --- 1. LOGIKA AUDIO & SLIDE TO UNLOCK ---
+        
+                // --- 1. LOGIKA AUDIO & SLIDE TO UNLOCK ---
         const sliderThumb = document.getElementById('slider-thumb');
         const splashScreen = document.getElementById('splash-screen');
         const mainContent = document.getElementById('main-content');
@@ -383,6 +385,15 @@
         
         let isDragging = false; let startX, initialLeft;
         const maxScroll = 340 - 50 - 10; 
+
+        // TRIK ANTI-BLOCK BROWSER: Pancing audio saat layar pertama kali disentuh/diklik
+        const unlockAudio = () => {
+            bgMusic.play().then(() => { bgMusic.pause(); }).catch(() => {});
+            sliderThumb.removeEventListener('mousedown', unlockAudio);
+            sliderThumb.removeEventListener('touchstart', unlockAudio);
+        };
+        sliderThumb.addEventListener('mousedown', unlockAudio);
+        sliderThumb.addEventListener('touchstart', unlockAudio, {passive: true});
 
         const startDrag = (e) => { isDragging = true; startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX; initialLeft = sliderThumb.offsetLeft; sliderThumb.style.transition = 'none'; };
         const drag = (e) => {
@@ -399,11 +410,11 @@
         function unlockSystem() {
             sliderThumb.style.display = 'none'; document.getElementById('slider-text').textContent = "Akses Diberikan...";
             
-            // Putar musik otomatis saat masuk
+            // Putar musik otomatis (Sekarang pasti jalan karena sudah di-unlock di atas)
             bgMusic.volume = 0.5;
             bgMusic.play().then(() => {
                 musicToggle.textContent = translations[currentLang].music_pause;
-            }).catch(e => console.log("Audio diblokir browser, user harus klik manual"));
+            }).catch(e => console.log("Audio diblokir browser"));
 
             setTimeout(() => {
                 splashScreen.style.transform = 'scale(1.2)'; splashScreen.style.opacity = '0';
@@ -414,6 +425,7 @@
                 }, 800);
             }, 500);
         }
+
 
         // --- 2. LOGIKA GANTI TEMA ---
         const themeBtn = document.getElementById('theme-toggle');
