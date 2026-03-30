@@ -11,7 +11,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* KEMBALI MENGGUNAKAN NUNITO */
             font-family: 'Nunito', 'Noto Sans JP', sans-serif;
             background-color: #f0f8ff; background-attachment: fixed;
             color: #0b2e4a; overflow-x: hidden; line-height: 1.6;
@@ -33,13 +32,11 @@
         .theme-aero .glass-text { color: #004d99; text-shadow: 0 2px 5px rgba(255,255,255,0.8); }
         .theme-aero .btn-elegant { background: linear-gradient(180deg, #4facfe 0%, #0073e6 100%); color: white; border: 1px solid #005ce6; }
         .theme-aero .icon-svg { fill: #0073e6; }
-        
-        /* Custom Dropdown Aero */
         .theme-aero .custom-dropdown-menu { background: rgba(255,255,255,0.8); border: 1px solid white; box-shadow: 0 10px 25px rgba(0,50,100,0.2); color: #0b2e4a;}
         .theme-aero .custom-dropdown-item:hover { background: rgba(0,115,230,0.1); }
 
         /* =========================================
-           TEMA 2: GLASSMORPHISM MODE (Sleek/Modern)
+           TEMA 2: GLASSMORPHISM MODE
         ========================================= */
         body.theme-glass { background: #0f172a; color: #e2e8f0; }
         .theme-glass .hill-bg { opacity: 0; pointer-events: none; }
@@ -59,8 +56,6 @@
         .theme-glass .code-tag:hover { background: rgba(56, 189, 248, 0.15); box-shadow: 0 0 15px rgba(56,189,248,0.3);}
         .theme-glass .aero-frame { background: rgba(0,0,0,0.4); border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 5px 20px rgba(0,0,0,0.8);}
         .theme-glass .aero-frame img { opacity: 0.85; filter: contrast(1.1); }
-        
-        /* Custom Dropdown Glass */
         .theme-glass .custom-dropdown-menu { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); color: #e2e8f0;}
         .theme-glass .custom-dropdown-item:hover { background: rgba(56, 189, 248, 0.2); }
 
@@ -84,16 +79,14 @@
         .gb-yellow { width: 300px; height: 300px; background: #ca8a04; top: 40%; left: 40%; animation-delay: -10s; opacity: 0.4;}
         @keyframes moveAround { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-50px, 100px) scale(0.9); } }
 
-        /* --- BUKIT GANDA --- */
+        /* --- BUKIT GANDA & AERO BUBBLES --- */
         .hill-bg-back { position: fixed; bottom: -5vh; right: -15vw; width: 90vw; height: 45vh; background: linear-gradient(180deg, #5ab822 0%, #2f7a08 100%); border-top: 1px solid rgba(255,255,255,0.5); border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: -3; transition: opacity 0.8s ease; }
         .hill-bg-front { position: fixed; bottom: -10vh; left: -10vw; width: 110vw; height: 40vh; background: linear-gradient(180deg, #7be038 0%, #46a312 100%); border-top: 1px solid rgba(255,255,255,0.8); border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: -2; transition: opacity 0.8s ease; box-shadow: 0 -10px 30px rgba(0,0,0,0.2), inset 0 15px 30px rgba(255,255,255,0.4);}
-
-        /* --- GELEMBUNG AERO --- */
         .aero-bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -4; }
         .a-bubble { position: absolute; bottom: -100px; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.1)); border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); animation: floatUp linear infinite; }
         @keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(-110vh); opacity: 0; } }
 
-        /* --- SPLASH SCREEN INTERAKTIF (SLIDE TO UNLOCK) --- */
+        /* --- SPLASH SCREEN INTERAKTIF --- */
         #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #0b2e4a, #020617); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease, transform 0.8s ease; }
         .splash-title { font-size: 3.5rem; color: #fff; font-weight: 900; letter-spacing: 3px; margin-bottom: 50px; text-shadow: 0 0 20px rgba(255,255,255,0.3); }
         .slider-container { width: 340px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 40px; border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); }
@@ -114,17 +107,15 @@
         .custom-dropdown { position: relative; }
         .custom-dropdown-menu {
             position: absolute; top: 120%; right: 0; min-width: 120px;
-            border-radius: 12px; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-10px);
+            border-radius: 12px; backdrop-filter: blur(25px); display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-10px);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); overflow: hidden;
         }
         .custom-dropdown.active .custom-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
         .custom-dropdown-item { padding: 10px 15px; cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: 0.2s; display: flex; align-items: center; gap: 8px;}
 
-        /* --- GLOBAL --- */
-        main { max-width: 900px; margin: 100px auto 60px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+        /* --- GLOBAL & KONTEN UTAMA --- */
+        main { max-width: 900px; margin: 120px auto 60px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
         .glass-panel { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; transition: all 0.5s ease; }
-        
         .hero { text-align: center; }
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.5); margin: 0 auto 20px auto; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
         h1 { font-size: 2.8rem; letter-spacing: -1px; margin-bottom: 5px; font-weight: 900; }
@@ -136,7 +127,6 @@
         .code-tag { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8); padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: 1rem; color: inherit; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
         .code-tag:hover { transform: translateY(-2px); }
         .code-tag:active { transform: translateY(1px); }
-
         .code-terminal { background: rgba(5, 15, 25, 0.9); text-align: left; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 20px; color: #00ffcc; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; min-height: 200px; overflow-x: auto; position: relative; display: none; margin-top: 10px; }
         .terminal-header { position: absolute; top: 0; left: 0; width: 100%; background: rgba(255,255,255,0.05); padding: 5px 15px; font-size: 0.8rem; color: #88ccee; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; align-items: center; }
         .mac-btn { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
@@ -151,11 +141,9 @@
         .project-header h3 { font-size: 1.5rem; font-weight: 900; display: flex; align-items: center;}
         .project-header svg { width: 28px; transition: fill 0.5s ease; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));}
         .project-desc { margin-bottom: 20px; font-size: 1.05rem; font-weight: 600; }
-        
         .btn-elegant { display: inline-flex; align-items: center; justify-content:center; gap: 10px; padding: 12px 25px; font-size: 1rem; font-weight: 800; text-decoration: none; border-radius: 30px; transition: all 0.2s; cursor: pointer; width: max-content; border:none; }
         .btn-elegant:hover { transform: translateY(-2px); }
 
-        /* Slider Foto */
         .photo-slider { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; margin-top: 15px; scrollbar-width: thin; scrollbar-color: rgba(128,128,128,0.5) transparent; }
         .photo-slider::-webkit-scrollbar { height: 6px; }
         .photo-slider::-webkit-scrollbar-thumb { background-color: rgba(128,128,128,0.5); border-radius: 10px;}
@@ -169,16 +157,13 @@
         .theme-glass .input-glass::placeholder { color: rgba(255,255,255,0.5); }
         .input-glass:focus { background: rgba(255,255,255,0.5); border-color: #0073e6; }
         .theme-glass .input-glass:focus { border-color: #38bdf8; }
-        
         .btn-submit { background: linear-gradient(180deg, #7be038 0%, #46a312 100%); border: 1px solid #46a312; color: white; width: 100%; justify-content: center; }
         .theme-glass .btn-submit { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #38bdf8; }
         .theme-glass .btn-submit:hover { background: rgba(56, 189, 248, 0.4); }
 
-        /* Animasi Goyang (Error Validation) */
         .error-shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; border-color: #ff5f56 !important; background: rgba(255,95,86,0.1) !important; color: #ff5f56;}
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 
-        /* Custom Notifikasi (Toast) - DI TENGAH KOTAK FORM */
         .custom-toast {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
             width: max-content; max-width: 90%;
@@ -191,16 +176,52 @@
         .custom-toast.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         .custom-toast.success { background: rgba(70, 163, 18, 0.95); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
 
+        /* --- ANIMASI SCROLL REVEAL --- */
+        .reveal-on-scroll { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+        /* --- AI FLOATING WIDGET STYLES (BASE/DESKTOP) --- */
+        #ai-window { display: none; flex-direction: column; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; position: fixed; bottom: 80px; right: 20px; width: 350px; height: 480px; z-index: 999; padding: 15px; }
+        #ai-window.show { display: flex; opacity: 1; transform: translateY(0); }
+        #ai-toggle-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; }
+        #ai-toggle-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4); }
+
+        /* =========================================
+           RESPONSIVE MOBILE VIEW
+        ========================================= */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; } .glass-panel { padding: 25px; } nav { padding: 15px 20px; }
+            h1 { font-size: 2.2rem; } 
+            .glass-panel { padding: 25px; } 
+            main { margin-top: 140px; } /* Memberi ruang lebih untuk nav bar yang meluas */
+            
+            /* Navigasi atas dibikin lebih compact & terpusat */
+            nav { padding: 15px 10px; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .nav-controls { gap: 8px; justify-content: center; width: 100%; } 
+            .top-btn { padding: 5px 10px; font-size: 0.8rem;}
+            .logo { font-size: 1.4rem; width: 100%; text-align: center; }
+
             .aero-frame { flex: 0 0 250px; } .tag-container { gap: 10px; } .code-tag { padding: 8px 15px; font-size: 0.9rem;}
             .slider-container { width: 280px; } .slider-text { margin-left: 20px; font-size: 0.9rem; }
-            .nav-controls { gap: 8px; } .top-btn { padding: 5px 12px; font-size: 0.9rem;}
             .custom-toast { font-size: 0.85rem; padding: 12px 20px; }
+            
+            /* AI Window di HP jadi model Bottom Sheet */
+            #ai-window { 
+                width: 100vw; right: 0; left: 0; height: 75vh; 
+                bottom: 0; /* Base position di bawah */
+                transform: translateY(100%); /* Disembunyikan ke bawah layar */
+                border-radius: 25px 25px 0 0; border: none; border-top: 1px solid rgba(255,255,255,0.3);
+                padding: 20px 15px; opacity: 1; /* Opacity selalu 1 untuk efek sliding */
+            }
+            #ai-window.show { transform: translateY(0); } /* Meluncur ke atas */
+            #ai-toggle-btn { bottom: 15px; right: 15px; padding: 10px 15px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body class="theme-aero"> 
+
+    <audio id="bg-music" loop>
+        <source src="frutiger aero.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="glass-bubbles">
         <div class="g-bubble gb-blue"></div>
@@ -225,8 +246,9 @@
     <nav>
         <div class="logo">Razuhfgkruay</div>
         <div class="nav-controls">
-            <button id="theme-toggle" class="top-btn" data-i18n="theme_btn">Mode: Aero</button>
+            <button id="music-toggle" class="top-btn" title="Nyalakan/Matikan Musik">🎵 Mainkan</button>
             
+            <button id="theme-toggle" class="top-btn" data-i18n="theme_btn">Mode: Aero</button>
             <div class="custom-dropdown" id="lang-dropdown">
                 <button class="top-btn" id="lang-toggle">ID 🇮🇩</button>
                 <div class="custom-dropdown-menu">
@@ -240,14 +262,14 @@
 
     <main id="main-content" style="display: none; opacity: 0; transition: opacity 1s;">
         
-        <section class="glass-panel hero">
+        <section class="glass-panel hero reveal-on-scroll">
             <img src="foto-profil.jpg" alt="Foto Profil" class="profile-img">
             <h1 class="glass-text" id="profile-name">Muhammad Razani Yusuf</h1>
             <h2 id="profile-alias">a.k.a Razuhfgkruay</h2>
-            <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; font-weight: 600;" data-i18n="bio_text">Halo! Aku siswa kelas 11 (18 tahun) yang sangat antusias di dunia web development. Berfokus pada penggabungan antarmuka estetis dengan logika pemrograman yang efisien. Mempersiapkan langkah menuju karir sebagai Software Engineer di Google.</p>
+            <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; font-weight: 600;" data-i18n="bio_text">Halo! Aku siswa kelas 11 (17 tahun) yang sangat antusias di dunia web development. Berfokus pada penggabungan antarmuka estetis dengan logika pemrograman yang efisien. Mempersiapkan langkah menuju karir sebagai Software Engineer di Google.</p>
         </section>
 
-        <section class="glass-panel skills-container">
+        <section class="glass-panel skills-container reveal-on-scroll">
             <h2 class="glass-text" style="font-size: 2rem; margin-bottom: 10px;" data-i18n="skills_title">Demonstrasi Logika</h2>
             <p style="margin-bottom: 25px; opacity: 0.9; font-weight: 600;" data-i18n="skills_desc">Klik pada bahasa pemrograman di bawah untuk melihat arsitektur kode.</p>
             
@@ -267,7 +289,7 @@
             </div>
         </section>
 
-        <section class="glass-panel">
+        <section class="glass-panel reveal-on-scroll">
             <h2 class="glass-text" style="font-size: 1.8rem; margin-bottom: 20px;" data-i18n="projects_title">Proyek & Implementasi</h2>
             
             <div class="project-card">
@@ -283,7 +305,7 @@
 
             <hr style="border: 0; border-top: 1px solid rgba(128,128,128,0.2); margin: 30px 0;">
 
-                        <div class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3h-4V5h4zM9 5v3H5V5h4zm-4 5h4v4H5v-4zm0 6h4v3H5v-3zm6 3v-3h4v3h-4zm0-5v-4h4v4h-4zm6 5v-3h4v3h-4zm4-5h-4v-4h4v4z"/></svg>
                     <h3 class="glass-text" data-i18n="proj_2_title">Sistem Absensi (IPM)</h3>
@@ -292,10 +314,10 @@
                 <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px; font-weight: 700;" data-i18n="swipe_hint">Geser horizontal untuk melihat antarmuka (UI):</p>
                 
                 <div class="photo-slider">
-                    <div class="aero-frame"><img src="absensi-1.png" alt="UI 1"></div>
-                    <div class="aero-frame"><img src="absensi-2.png" alt="UI 2"></div>
-                    <div class="aero-frame"><img src="absensi-3.png" alt="UI 3"></div>
-                    <div class="aero-frame"><img src="absensi-4.png" alt="UI 4"></div>
+                    <div class="aero-frame"><img src="absensi-1.png" alt="UI 1" loading="lazy"></div>
+                    <div class="aero-frame"><img src="absensi-2.png" alt="UI 2" loading="lazy"></div>
+                    <div class="aero-frame"><img src="absensi-3.png" alt="UI 3" loading="lazy"></div>
+                    <div class="aero-frame"><img src="absensi-4.png" alt="UI 4" loading="lazy"></div>
                 </div>
 
                 <div class="project-header" style="margin-top: 30px;">
@@ -305,18 +327,17 @@
                 <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px; font-weight: 700;" data-i18n="swipe_hint">Geser horizontal untuk melihat antarmuka (UI):</p>
                 
                 <div class="photo-slider">
-                    <div class="aero-frame"><img src="rekap-1.png" alt="UI 1"></div>
-                    <div class="aero-frame"><img src="rekap-2.png" alt="UI 2"></div>
-                    <div class="aero-frame"><img src="rekap-3.png" alt="UI 3"></div>
-                    <div class="aero-frame"><img src="rekap-4.png" alt="UI 4"></div>
-                    <div class="aero-frame"><img src="rekap-5.png" alt="UI 5"></div>
-                    <div class="aero-frame"><img src="rekap-6.png" alt="UI 6"></div>
+                    <div class="aero-frame"><img src="rekap-1.png" alt="UI 1" loading="lazy"></div>
+                    <div class="aero-frame"><img src="rekap-2.png" alt="UI 2" loading="lazy"></div>
+                    <div class="aero-frame"><img src="rekap-3.png" alt="UI 3" loading="lazy"></div>
+                    <div class="aero-frame"><img src="rekap-4.png" alt="UI 4" loading="lazy"></div>
+                    <div class="aero-frame"><img src="rekap-5.png" alt="UI 5" loading="lazy"></div>
+                    <div class="aero-frame"><img src="rekap-6.png" alt="UI 6" loading="lazy"></div>
                 </div>
             </div>
-
         </section>
 
-        <section class="glass-panel" style="text-align: center; position: relative;">
+        <section class="glass-panel reveal-on-scroll" style="text-align: center; position: relative;">
             <h2 class="glass-text" style="font-size: 1.8rem; margin-bottom: 10px;" data-i18n="contact_title">Kirim Pesan ke Database</h2>
             <p style="margin-bottom: 25px; opacity: 0.9; font-weight: 600;" data-i18n="contact_desc">Tanya seputar proyek ataupun tentang diriku</p>
             
@@ -333,16 +354,33 @@
                 <svg id="toast-icon" style="width: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"></svg>
                 <span id="toast-msg">Pesan Notifikasi</span>
             </div>
-
         </section>
-
     </main>
 
+    <button id="ai-toggle-btn" class="btn-elegant" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+        <svg style="width: 20px; fill: white; margin-right: 8px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm0-2h2V7h-2z"/></svg>
+        <span data-i18n="ai_btn">Tanya AI-ku</span>
+    </button>
+
+    <div id="ai-window" class="glass-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 class="glass-text" style="font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 8px;">
+                <span class="cursor" style="margin:0; width:10px; height:10px; border-radius:50%; animation: none;"></span>
+                Kalytera AI
+            </h3>
+            <button id="close-ai" style="background: transparent; border: none; font-weight: bold; font-size: 1.5rem; cursor: pointer; color: inherit; transition: 0.3s;">&times;</button>
+        </div>
+        <iframe src="https://kalytera-ai.vercel.app/" style="width: 100%; height: 100%; border: none; border-radius: 10px; background: rgba(255,255,255,0.2);"></iframe>
+    </div>
+
     <script>
-        // --- 1. LOGIKA SLIDE TO UNLOCK (SPLASH SCREEN) ---
+        // --- 1. LOGIKA AUDIO & SLIDE TO UNLOCK ---
         const sliderThumb = document.getElementById('slider-thumb');
         const splashScreen = document.getElementById('splash-screen');
         const mainContent = document.getElementById('main-content');
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        
         let isDragging = false; let startX, initialLeft;
         const maxScroll = 340 - 50 - 10; 
 
@@ -360,16 +398,24 @@
 
         function unlockSystem() {
             sliderThumb.style.display = 'none'; document.getElementById('slider-text').textContent = "Akses Diberikan...";
+            
+            // Putar musik otomatis saat masuk
+            bgMusic.volume = 0.5;
+            bgMusic.play().then(() => {
+                musicToggle.textContent = translations[currentLang].music_pause;
+            }).catch(e => console.log("Audio diblokir browser, user harus klik manual"));
+
             setTimeout(() => {
                 splashScreen.style.transform = 'scale(1.2)'; splashScreen.style.opacity = '0';
                 setTimeout(() => {
                     splashScreen.style.display = 'none'; mainContent.style.display = 'flex';
                     void mainContent.offsetWidth; mainContent.style.opacity = '1'; createAeroBubbles();
+                    triggerScrollAnimations();
                 }, 800);
             }, 500);
         }
 
-        // --- 2. LOGIKA GANTI TEMA (AERO vs GLASSMORPHISM) ---
+        // --- 2. LOGIKA GANTI TEMA ---
         const themeBtn = document.getElementById('theme-toggle');
         let currentTheme = 'aero';
 
@@ -395,7 +441,8 @@
                 showToast("Easter Egg Ditemukan! Tema Google diaktifkan.", false);
             }
         });
-        // --- 4. CUSTOM DROPDOWN BAHASA & TRANSLASI (i18n) ---
+
+        // --- 4. CUSTOM DROPDOWN BAHASA & TRANSLASI ---
         const langDropdown = document.getElementById('lang-dropdown');
         const langToggle = document.getElementById('lang-toggle');
         const langItems = document.querySelectorAll('.custom-dropdown-item');
@@ -410,12 +457,11 @@
                 skills_title: "Demonstrasi Logika", skills_desc: "Klik pada bahasa pemrograman di bawah untuk melihat arsitektur kode.",
                 projects_title: "Proyek & Implementasi",
                 proj_1_title: "Kalytera AI", proj_1_desc: "Mengembangkan chatbot AI interaktif secara mandiri. Mengelola konfigurasi API pihak ketiga dan memastikan aplikasi berjalan secara responsif melalui platform Vercel.", launch_btn: "Buka Aplikasi AI",
-                proj_2_title: "Sistem Absensi (IPM)", proj_2_desc: "Merancang arsitektur pendataan organisasi berupa one way access dengan UI&UX yang menarik dan mudah di mengerti menggunakan HTML,CSS,JS, serta ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.", 
-                swipe_hint: "Geser horizontal untuk melihat antarmuka (UI):",
-                proj_3_title: "Rekap Absensi Otomatis (IPM)", // <-- Ini tambahan baru
+                proj_2_title: "Sistem Absensi (IPM)", proj_2_desc: "Merancang arsitektur pendataan organisasi berupa one way access dengan UI&UX yang menarik dan mudah di mengerti menggunakan HTML,CSS,JS, serta ekosistem Google Sheets. Memprogram algoritma Google Apps Script untuk rekapitulasi data otomatis.", swipe_hint: "Geser horizontal untuk melihat antarmuka (UI):",
+                proj_3_title: "Rekap Absensi Otomatis (IPM)", 
                 contact_title: "Kirim Pesan ke Database", contact_desc: "Tanya seputar proyek ataupun tentang diriku.", contact_btn: "Kirim Pesan", term_wait: "Menunggu input... (Ketik rahasia di keyboard)",
-                ph_name: "Nama Anda", ph_email: "Email Anda", ph_msg: "Ketik pesan di sini...",
-                err_empty: "Harap isi semua kolom!", err_email: "Format email tidak valid (harus pakai @ dan domain)."
+                ph_name: "Nama Anda", ph_email: "Email Anda", ph_msg: "Ketik pesan di sini...", err_empty: "Harap isi semua kolom!", err_email: "Format email tidak valid (harus pakai @ dan domain).",
+                ai_btn: "Tanya AI-ku", music_play: "🎵 Mainkan", music_pause: "🎵 Jeda"
             },
             en: {
                 name: "Muhammad Razani Yusuf", alias: "a.k.a Razuhfgkruay", slide_txt: "Slide to unlock >>", theme_btn: "Mode: Aero",
@@ -423,12 +469,11 @@
                 skills_title: "Logic Demonstration", skills_desc: "Click on a programming language below to view the code architecture.",
                 projects_title: "Projects & Implementations",
                 proj_1_title: "Kalytera AI", proj_1_desc: "Independently developed an interactive AI chatbot. Managed third-party API configurations and ensured responsive application performance via Vercel.", launch_btn: "Launch AI App",
-                proj_2_title: "Attendance System (IPM)", proj_2_desc: "Designed a one-way access organizational data architecture with an attractive UI/UX using HTML, CSS, JS, and the Google Sheets ecosystem. Programmed Google Apps Script algorithms for automatic data recapitulation.", 
-                swipe_hint: "Swipe horizontally to view the UI:",
-                proj_3_title: "Automated Attendance Recapitulation (IPM)", // <-- Ini tambahan baru
+                proj_2_title: "Attendance System (IPM)", proj_2_desc: "Designed a one-way access organizational data architecture with an attractive UI/UX using HTML, CSS, JS, and the Google Sheets ecosystem. Programmed Google Apps Script algorithms for automatic data recapitulation.", swipe_hint: "Swipe horizontally to view the UI:",
+                proj_3_title: "Automated Attendance Recapitulation (IPM)", 
                 contact_title: "Send to Database", contact_desc: "Ask about the project or about me.", contact_btn: "Send Message", term_wait: "Waiting for input... (Type the secret on keyboard)",
-                ph_name: "Your Name", ph_email: "Your Email", ph_msg: "Type your message here...",
-                err_empty: "Please fill in all fields!", err_email: "Invalid email format (must include @ and domain)."
+                ph_name: "Your Name", ph_email: "Your Email", ph_msg: "Type your message here...", err_empty: "Please fill in all fields!", err_email: "Invalid email format (must include @ and domain).",
+                ai_btn: "Ask My AI", music_play: "🎵 Play", music_pause: "🎵 Pause"
             },
             ja: {
                 name: "ムハンマド・ラザニ・ユスフ", alias: "別名: Razuhfgkruay", slide_txt: "スライドしてロック解除 >>", theme_btn: "モード: エアロ",
@@ -436,38 +481,39 @@
                 skills_title: "ロジックのデモ", skills_desc: "下のプログラミング言語をクリックして、コードアーキテクチャを表示します。",
                 projects_title: "プロジェクトと実装",
                 proj_1_title: "Kalytera AI", proj_1_desc: "インタラクティブなAIチャットボットを独自に開発しました。サードパーティAPIを管理し、Vercelを介して応答性の高いパフォーマンスを確保しました。", launch_btn: "AIアプリを開く",
-                proj_2_title: "自動出欠システム (IPM)", proj_2_desc: "HTML、CSS、JS、およびGoogleスプレッドシートエコシステムを使用して、魅力的でわかりやすいUI / UXを備えた一方向アクセスの組織データアーキテクチャを設計しました。 データ要約のためのGoogle Apps Scriptアルゴリズムをプログラムしました。", 
-                swipe_hint: "横にスワイプしてUIを表示:",
-                proj_3_title: "自動出欠集計 (IPM)", // <-- Ini tambahan baru
+                proj_2_title: "自動出欠システム (IPM)", proj_2_desc: "HTML、CSS、JS、およびGoogleスプレッドシートエコシステムを使用して、魅力的でわかりやすいUI / UXを備えた一方向アクセスの組織データアーキテクチャを設計しました。 データ要約のためのGoogle Apps Scriptアルゴリズムをプログラムしました。", swipe_hint: "横にスワイプしてUIを表示:",
+                proj_3_title: "自動出欠集計 (IPM)", 
                 contact_title: "データベースに送信", contact_desc: "プロジェクトについて、または私について質問してください。", contact_btn: "メッセージを送信", term_wait: "入力を待っています...（キーボードで秘密を入力してください）",
-                ph_name: "お名前", ph_email: "メールアドレス", ph_msg: "ここにメッセージを入力...",
-                err_empty: "すべてのフィールドに入力してください！", err_email: "無効なメール形式（@とドメインを含める必要があります）。"
+                ph_name: "お名前", ph_email: "メールアドレス", ph_msg: "ここにメッセージを入力...", err_empty: "すべてのフィールドに入力してください！", err_email: "無効なメール形式（@とドメインを含める必要があります）。",
+                ai_btn: "AIに聞く", music_play: "🎵 再生", music_pause: "🎵 一時停止"
             }
         };
 
         let currentLang = 'id';
-
         langItems.forEach(item => {
             item.addEventListener('click', (e) => {
-                const lang = e.target.getAttribute('data-value');
-                currentLang = lang;
-                langToggle.innerHTML = e.target.innerHTML;
-                
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (translations[lang][key]) el.textContent = translations[lang][key];
-                });
-
-                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                    const key = el.getAttribute('data-i18n-placeholder');
-                    if (translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
-                });
-                
-                document.getElementById('profile-name').textContent = translations[lang].name;
-                document.getElementById('profile-alias').textContent = translations[lang].alias;
-
+                const lang = e.target.getAttribute('data-value'); currentLang = lang; langToggle.innerHTML = e.target.innerHTML;
+                document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (translations[lang][key]) el.textContent = translations[lang][key]; });
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.getAttribute('data-i18n-placeholder'); if (translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]); });
+                document.getElementById('profile-name').textContent = translations[lang].name; document.getElementById('profile-alias').textContent = translations[lang].alias;
                 if(currentTheme === 'glass') { document.getElementById('theme-toggle').textContent = lang === 'ja' ? 'モード: ガラス' : 'Mode: Glass'; }
+                
+                // Update teks tombol musik saat ganti bahasa
+                if (bgMusic.paused) {
+                    musicToggle.textContent = translations[currentLang].music_play;
+                } else {
+                    musicToggle.textContent = translations[currentLang].music_pause;
+                }
             });
+        });
+
+        // Toggle Musik Manual
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play(); musicToggle.textContent = translations[currentLang].music_pause;
+            } else {
+                bgMusic.pause(); musicToggle.textContent = translations[currentLang].music_play;
+            }
         });
 
         // --- 5. LOGIKA KODE ANIMASI TERMINAL ---
@@ -500,46 +546,29 @@
             }, 1000); 
         }
 
-        // --- 7. ANIMATED TOAST & CUSTOM VALIDATION ---
-        const toast = document.getElementById('custom-toast');
-        const toastMsg = document.getElementById('toast-msg');
-        const toastIcon = document.getElementById('toast-icon');
-
+        // --- 7. ANIMATED TOAST & LIVE FORM ---
+        const toast = document.getElementById('custom-toast'); const toastMsg = document.getElementById('toast-msg'); const toastIcon = document.getElementById('toast-icon');
         function showToast(message, isError = true) {
             toastMsg.textContent = message;
-            if(isError) {
-                toast.classList.remove('success');
-                toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
-            } else {
-                toast.classList.add('success');
-                toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>';
-            }
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+            if(isError) { toast.classList.remove('success'); toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>'; } 
+            else { toast.classList.add('success'); toastIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>'; }
+            toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); }, 4000);
         }
 
-        // --- 8. LIVE FORM (GOOGLE SHEETS) ---
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzrpftpR5SgjjibRw23z-dueKzbjhMLhJzv56r8qk6Vb-4g9CzOnIuqJl-M2DUJgUgL/exec'; 
         const form = document.getElementById('live-form');
         
         form.addEventListener('submit', e => {
             e.preventDefault();
-            
-            const iNama = document.getElementById('input-nama');
-            const iEmail = document.getElementById('input-email');
-            const iPesan = document.getElementById('input-pesan');
+            const iNama = document.getElementById('input-nama'), iEmail = document.getElementById('input-email'), iPesan = document.getElementById('input-pesan');
             let isValid = true;
             
             if(iNama.value.trim() === '' || iEmail.value.trim() === '' || iPesan.value.trim() === '') {
                 showToast(translations[currentLang].err_empty, true);
-                if(iNama.value.trim() === '') iNama.classList.add('error-shake');
-                if(iEmail.value.trim() === '') iEmail.classList.add('error-shake');
-                if(iPesan.value.trim() === '') iPesan.classList.add('error-shake');
+                if(iNama.value.trim() === '') iNama.classList.add('error-shake'); if(iEmail.value.trim() === '') iEmail.classList.add('error-shake'); if(iPesan.value.trim() === '') iPesan.classList.add('error-shake');
                 isValid = false;
             } else if (!iEmail.value.includes('@') || !iEmail.value.includes('.')) {
-                showToast(translations[currentLang].err_email, true);
-                iEmail.classList.add('error-shake');
-                isValid = false;
+                showToast(translations[currentLang].err_email, true); iEmail.classList.add('error-shake'); isValid = false;
             }
 
             setTimeout(() => { iNama.classList.remove('error-shake'); iEmail.classList.remove('error-shake'); iPesan.classList.remove('error-shake'); }, 500);
@@ -547,25 +576,46 @@
 
             document.getElementById('submit-btn').innerHTML = '<span class="cursor" style="margin:0; width:15px; height:15px; border-radius:50%;"></span>'; 
             
-            if(scriptURL === 'MASUKKAN_LINK_WEB_APP_GOOGLE_SCRIPT_KAMU_DISINI') {
-                setTimeout(() => { 
-                    showToast("Simulasi: Pesan berhasil (Masukkan link asli di HTML).", false);
-                    form.reset(); 
-                    document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
-                }, 1500);
-                return;
-            }
-
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                showToast("Pesan berhasil masuk ke database!", false);
-                form.reset();
-                document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
-            })
-            .catch(error => {
-                showToast("Gagal mengirim pesan ke server.", true);
-                document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>';
-            });
+            .then(response => { showToast("Pesan berhasil masuk ke database!", false); form.reset(); document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>'; })
+            .catch(error => { showToast("Gagal mengirim pesan ke server.", true); document.getElementById('submit-btn').innerHTML = '<span data-i18n="contact_btn">' + translations[currentLang].contact_btn + '</span>'; });
+        });
+
+        // --- 8. ANIMASI SCROLL REVEAL ---
+        function triggerScrollAnimations() {
+            const elements = document.querySelectorAll('.reveal-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
+            }, { threshold: 0.15 });
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // --- 9. WIDGET AI KALYTERA ---
+        const aiToggleBtn = document.getElementById('ai-toggle-btn');
+        const aiWindow = document.getElementById('ai-window');
+        const closeAi = document.getElementById('close-ai');
+
+        aiToggleBtn.addEventListener('click', () => {
+            if (!aiWindow.classList.contains('show')) {
+                // Tampilkan
+                aiWindow.style.display = 'flex';
+                // Trigger reflow biar animasi CSS jalan
+                void aiWindow.offsetWidth;
+                aiWindow.classList.add('show');
+            } else {
+                // Sembunyikan
+                aiWindow.classList.remove('show');
+                setTimeout(() => {
+                    if(!aiWindow.classList.contains('show')) aiWindow.style.display = 'none';
+                }, 400); // Sesuaikan dengan durasi transisi
+            }
+        });
+
+        closeAi.addEventListener('click', () => {
+            aiWindow.classList.remove('show');
+            setTimeout(() => {
+                if(!aiWindow.classList.contains('show')) aiWindow.style.display = 'none';
+            }, 400);
         });
     </script>
 </body>
