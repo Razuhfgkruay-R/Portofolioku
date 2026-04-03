@@ -370,8 +370,8 @@
         <span data-i18n="ai_btn">Tanya AI-ku</span>
     </button>
 
-    <div id="ai-window" class="glass-panel">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+  <div id="ai-window" class="glass-panel">
+        <div id="ai-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; cursor: grab; user-select: none;">
             <h3 class="glass-text" style="font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 8px;">
                 <span class="cursor" style="margin:0; width:10px; height:10px; border-radius:50%; animation: none;"></span>
                 Kalytera AI
@@ -663,6 +663,71 @@
             setTimeout(() => {
                 if(!aiWindow.classList.contains('show')) aiWindow.style.display = 'none';
             }, 400);
+        });
+
+        // --- 10. LOGIKA DRAG & DROP JENDELA AI (KHUSUS DESKTOP) ---
+        const aiHeader = document.getElementById('ai-header');
+        const aiIframe = aiWindow.querySelector('iframe');
+        
+        let isDraggingAI = false;
+        let offsetX, offsetY;
+
+        // Saat mouse ditekan di bagian header AI
+        aiHeader.addEventListener('mousedown', (e) => {
+            if (window.innerWidth <= 768) return; // Batalkan fungsi drag jika di HP
+            
+            isDraggingAI = true;
+            aiHeader.style.cursor = 'grabbing';
+            
+            // Trik penting: Matikan interaksi iframe sementara agar mousemove tidak nyangkut
+            aiIframe.style.pointerEvents = 'none';
+
+            // Dapatkan posisi jendela AI saat ini
+            const rect = aiWindow.getBoundingClientRect();
+            
+            // Ubah dari patokan bottom/right menjadi left/top supaya bebas digeser
+            if (!aiWindow.style.left || !aiWindow.style.top) {
+                aiWindow.style.left = rect.left + 'px';
+                aiWindow.style.top = rect.top + 'px';
+                aiWindow.style.bottom = 'auto';
+                aiWindow.style.right = 'auto';
+            }
+
+            // Hitung jarak klik mouse dari sudut kiri atas jendela AI
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+        });
+
+        // Saat mouse digeser
+        document.addEventListener('mousemove', (e) => {
+            if (!isDraggingAI) return;
+            e.preventDefault();
+
+            let newX = e.clientX - offsetX;
+            let newY = e.clientY - offsetY;
+
+            // Batasi agar jendela tidak bisa digeser keluar layar
+            const maxX = window.innerWidth - aiWindow.offsetWidth;
+            const maxY = window.innerHeight - aiWindow.offsetHeight;
+
+            if (newX < 0) newX = 0;
+            if (newX > maxX) newX = maxX;
+            if (newY < 0) newY = 0;
+            if (newY > maxY) newY = maxY;
+
+            aiWindow.style.left = newX + 'px';
+            aiWindow.style.top = newY + 'px';
+        });
+
+        // Saat mouse dilepas
+        document.addEventListener('mouseup', () => {
+            if (isDraggingAI) {
+                isDraggingAI = false;
+                aiHeader.style.cursor = 'grab';
+                
+                // Nyalakan kembali interaksi iframe
+                aiIframe.style.pointerEvents = 'auto';
+            }
         });
     </script>
 </body>
