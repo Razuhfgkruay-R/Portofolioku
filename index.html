@@ -180,13 +180,20 @@
         .reveal-on-scroll { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
 
-               /* --- AI FLOATING WIDGET STYLES (BASE/DESKTOP) --- */
-        /* Ukuran desktop diperkecil jadi 300x400 */
-        #ai-window { display: none; flex-direction: column; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; position: fixed; bottom: 80px; right: 20px; width: 300px; height: 400px; z-index: 999; padding: 15px; }
+        /* --- AI FLOATING WIDGET STYLES (BASE/DESKTOP) --- */
+        #ai-window { 
+            display: none; flex-direction: column; opacity: 0; transform: translateY(20px); 
+            transition: all 0.4s ease; position: fixed; bottom: 80px; right: 20px; 
+            width: 400px; /* Lebar ditambah biar teks & UI AI tidak kegencet */
+            height: 600px; /* Tinggi ditambah biar area chat lebih puas */
+            z-index: 999; padding: 15px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* Ekstra shadow biar lebih pop-up */
+        }
         #ai-window.show { display: flex; opacity: 1; transform: translateY(0); }
         #ai-toggle-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; }
         #ai-toggle-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4); }
 
+        
         /* =========================================
            RESPONSIVE MOBILE VIEW
         ========================================= */
